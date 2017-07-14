@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->boolean('free_shipping');
             $table->text('description');
             $table->decimal('price');
+            $table->boolean('active')->default(1);
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
