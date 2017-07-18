@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'products'], function(){
+    Route::get('', 'ProductController@index')->name('products.index');
+
+    Route::post('import', 'ProductController@import')->name('products.import');
+    Route::get('{id}/show', 'ProductController@show')->name('products.show');
+
+    Route::put('{id}/save', 'ProductController@update')->name('products.save');
+    Route::get('{id}/edit', 'ProductController@edit')->name('products.edit');
+    Route::put('{id}/active', 'ProductController@active')->name('products.active');
+    Route::delete('{id}/inactive', 'ProductController@destroy')->name('products.inactive');
 });
